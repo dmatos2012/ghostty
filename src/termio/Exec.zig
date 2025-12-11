@@ -1316,6 +1316,10 @@ pub const ReadThread = struct {
                 // and let our poll happen.
                 if (n == 0) break;
 
+                const should_output = io.config.scroll_to_bottom.output;
+                if (should_output) {
+                    try io.terminal.scrollViewport(.bottom);
+                }
                 // log.info("DATA: {d}", .{n});
                 @call(.always_inline, termio.Termio.processOutput, .{ io, buf[0..n] });
             }

@@ -162,6 +162,7 @@ pub const DerivedConfig = struct {
     osc_color_report_format: configpkg.Config.OSCColorReportFormat,
     clipboard_write: configpkg.ClipboardAccess,
     enquiry_response: []const u8,
+    scroll_to_bottom: configpkg.Config.ScrollToBottom,
 
     pub fn init(
         alloc_gpa: Allocator,
@@ -186,6 +187,7 @@ pub const DerivedConfig = struct {
             // This has to be last so that we copy AFTER the arena allocations
             // above happen (Zig assigns in order).
             .arena = arena,
+            .scroll_to_bottom = config.@"scroll-to-bottom",
         };
     }
 

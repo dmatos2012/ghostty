@@ -8803,7 +8803,8 @@ pub const Scrollbar = enum {
 /// See scroll-to-bottom
 pub const ScrollToBottom = packed struct {
     keystroke: bool = true,
-    output: bool = false,
+    // output: bool = false,
+    output: bool = true,
 
     pub const default: ScrollToBottom = .{};
 };

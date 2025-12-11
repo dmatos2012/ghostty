@@ -890,6 +890,7 @@ pub fn needsConfirmQuit(self: *Surface) bool {
 /// Called from the app thread to handle mailbox messages to our specific
 /// surface.
 pub fn handleMessage(self: *Surface, msg: Message) !void {
+    // log.warn("Handle message {any}", .{msg});
     switch (msg) {
         .change_config => |config| try self.updateConfig(config),
 
@@ -1020,7 +1021,6 @@ pub fn handleMessage(self: *Surface, msg: Message) !void {
         },
 
         .renderer_health => |health| self.updateRendererHealth(health),
-
         .scrollbar => |scrollbar| self.updateScrollbar(scrollbar),
 
         .report_color_scheme => |force| self.reportColorScheme(force),
